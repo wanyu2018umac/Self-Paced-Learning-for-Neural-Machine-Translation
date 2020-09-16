@@ -1,0 +1,14 @@
+python -u main.py --file_prefix ../data/WMT17_EnZh/ \
+  --src_train train.bpe.zh --tgt_train train.bpe.en \
+  --src_valid dev.bpe.zh --tgt_valid dev.bpe.en \
+  --save_vocab --bpe_src --bpe_tgt --num_of_steps 200000 \
+  --update_decay 2 --device 0 1 2 3 \
+  --batch_capacity 65536 \
+  --layer_norm_pre learnable --layer_norm_post none \
+  --layer_norm_encoder_start none --layer_norm_encoder_end learnable \
+  --layer_norm_decoder_start none --layer_norm_decoder_end learnable \
+  --src_pad_token "<PAD>" --src_unk_token "<UNK>" --src_sos_token "" --src_eos_token "<EOS>" \
+  --tgt_pad_token "<PAD>" --tgt_unk_token "<UNK>" --tgt_sos_token "<PAD>" --tgt_eos_token "<EOS>" \
+  --annotate "WMT17_ZhEn" --num_of_workers 8 \
+  --eval_every_steps 250000 --save_every_steps 1000 --max_save_models -1 \
+  --normalized_cl_factors --exponential_value 2

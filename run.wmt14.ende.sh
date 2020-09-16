@@ -1,0 +1,15 @@
+python -u main.py --file_prefix ../data/WMT14_EnDe/ \
+  --src_train corpus.bpe32k.en --tgt_train corpus.bpe32k.de \
+  --src_valid newstest2013.bpe.en --tgt_valid newstest2013.bpe.de \
+  --save_vocab --bpe_src --bpe_tgt --num_of_steps 150000 \
+  --update_decay 2 --device 0 1 2 3 \
+  --batch_capacity 65536 \
+  --share_projection_and_embedding \
+  --layer_norm_pre learnable --layer_norm_post none \
+  --layer_norm_encoder_start none --layer_norm_encoder_end learnable \
+  --layer_norm_decoder_start none --layer_norm_decoder_end learnable \
+  --src_pad_token "<PAD>" --src_unk_token "<UNK>" --src_sos_token "" --src_eos_token "<EOS>" \
+  --tgt_pad_token "<PAD>" --tgt_unk_token "<UNK>" --tgt_sos_token "<PAD>" --tgt_eos_token "<EOS>" \
+  --annotate "WMT14_EnDe" --num_of_workers 8 \
+  --eval_every_steps 200000 --save_every_steps 1000 --max_save_models -1 --length_merging_mantissa_bits 2 \
+  --normalized_cl_factors --exponential_value 2
